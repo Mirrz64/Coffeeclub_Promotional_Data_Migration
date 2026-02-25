@@ -21,3 +21,14 @@ SET age_group =
 		WHEN age BETWEEN 30 AND 44 THEN 'Early Mid Age'
 		ELSE 'Young Adults'
 	END;
+
+SELECT  income_bucket,COUNT(1)  , SUM(COUNT(1)) OVER (),
+round((COUNT(1) / ( SUM(COUNT(1)) OVER ()))  *100,2) perc
+FROM  customers  v
+GROUP BY income_bucket;
+
+
+SELECT  age_group,COUNT(1)  , SUM(COUNT(1)) OVER (),
+round((COUNT(1) / ( SUM(COUNT(1)) OVER ()))  *100,2) perc
+FROM  customers  v
+GROUP BY age_group;
